@@ -28,6 +28,10 @@ theme_pub <- function(base_size = 11) {
 }
 # No legends, titles or annotations inside the figures: the captions in
 # the Supplementary describe the symbols.
+# Colour palette, checked for colour-vision deficiency; every colour is
+# paired with a distinct symbol or line type, so the figures also read in
+# greyscale.
+BLUE <- "#2a78d6"; ORANGE <- "#eb6834"
 
 # S6. VIP with the ILR coordinates -------------------------------
 
@@ -56,12 +60,14 @@ ord <- vip$regressor[order(vip$VIP_shift_mean + vip$VIP_shape_mean,
 vip_long$regressor <- factor(vip_long$regressor, levels = rev(ord))
 
 p3 <- ggplot(vip_long, aes(x = mean, y = regressor,
-                           shape = target, linetype = target)) +
+                           shape = target, linetype = target,
+                           colour = target)) +
   geom_vline(xintercept = 1, linetype = "dashed", color = "grey50") +
   geom_errorbar(aes(xmin = lo, xmax = hi), width = 0.2,
-                position = position_dodge(0.5), colour = "black") +
+                position = position_dodge(0.5)) +
   geom_point(size = 2.8, position = position_dodge(0.5),
-             colour = "black", fill = "white", stroke = 0.7) +
+             fill = "white", stroke = 0.8) +
+  scale_colour_manual(values = c(BLUE, ORANGE), name = NULL) +
   scale_shape_manual(values = c(16, 21), name = NULL) +
   scale_linetype_manual(values = c("solid", "22"), name = NULL) +
   labs(x = "Variable importance in projection", y = NULL) +
@@ -83,9 +89,10 @@ sens_long <- pivot_longer(sens,
 
 p4a <- ggplot(sens_long, aes(x = window, y = R2,
                              linetype = target, shape = target,
-                             group = target)) +
-  geom_line(linewidth = 0.7, colour = "black") +
-  geom_point(size = 2.8, colour = "black", fill = "white", stroke = 0.7) +
+                             colour = target, group = target)) +
+  geom_line(linewidth = 0.7) +
+  geom_point(size = 2.8, fill = "white", stroke = 0.8) +
+  scale_colour_manual(values = c(BLUE, ORANGE), name = NULL) +
   scale_linetype_manual(values = c("solid", "22"), name = NULL) +
   scale_shape_manual(values = c(16, 21), name = NULL) +
   scale_y_continuous(limits = c(0.25, 0.45)) +
@@ -99,7 +106,7 @@ inf$country <- factor(inf$country, levels = rev(inf$country))
 p4b <- ggplot(inf, aes(x = dR2, y = country, fill = dR2 > 0)) +
   geom_vline(xintercept = 0, color = "grey50") +
   geom_col(colour = "black", linewidth = 0.25) +
-  scale_fill_manual(values = c("TRUE" = "grey30", "FALSE" = "white"),
+  scale_fill_manual(values = c("TRUE" = BLUE, "FALSE" = ORANGE),
                     guide = "none") +
   labs(x = "ΔR² (removing this country)", y = NULL) +
   theme_pub(10)

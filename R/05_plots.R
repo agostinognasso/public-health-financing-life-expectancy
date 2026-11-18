@@ -28,6 +28,10 @@ FEATURE_NAMES <- c(trend_slope = "Trend slope",
                    n_reversal = "Reversal count", pelt_n = "Changepoint count",
                    slope_range = "Segmental slope range",
                    slope_max = "Maximum segmental slope")
+# Colour palette, checked for colour-vision deficiency; every colour is
+# paired with a distinct symbol or position, so the figures also read in
+# greyscale.
+BLUE <- "#2a78d6"; ORANGE <- "#eb6834"; GREY <- "#c9c9c9"
 
 
 # S1. variance by component --------------------------------------
@@ -40,7 +44,7 @@ p_var <- ggplot(pca_var, aes(x = PC, y = var_expl, fill = retained)) +
   geom_line(aes(y = cum_var, group = 1), color = "black", linewidth = 0.7) +
   geom_point(aes(y = cum_var), color = "black", size = 2.2, shape = 17) +
   geom_hline(yintercept = 0.80, linetype = "dashed", color = "grey50") +
-  scale_fill_manual(values = c("TRUE" = "grey25", "FALSE" = "grey80"),
+  scale_fill_manual(values = c("TRUE" = BLUE, "FALSE" = GREY),
                     guide = "none") +
   scale_x_discrete(labels = function(x) sub("^PC", "", x)) +
   scale_y_continuous(labels = scales::percent) +
@@ -63,7 +67,7 @@ p_load <- ggplot(load_long, aes(x = loading, y = feature, fill = loading > 0)) +
   geom_col(colour = "black", linewidth = 0.25) +
   geom_vline(xintercept = 0, color = "grey50") +
   facet_wrap(~ panel, ncol = 3) +
-  scale_fill_manual(values = c("TRUE" = "grey30", "FALSE" = "white"),
+  scale_fill_manual(values = c("TRUE" = BLUE, "FALSE" = ORANGE),
                     guide = "none") +
   labs(x = "Loading", y = NULL) +
   theme_minimal(base_size = 11) +
@@ -84,11 +88,13 @@ vip_d$regressor <- factor(vip_d$regressor,
                           levels = rev(vip$regressor[order(vip$delta_mean)]))
 
 p_delta <- ggplot(vip_d, aes(x = delta_mean, y = regressor,
-                             shape = diff_signif, linetype = diff_signif)) +
+                             shape = diff_signif, linetype = diff_signif,
+                             colour = diff_signif)) +
   geom_vline(xintercept = 0, color = "grey50") +
-  geom_errorbar(aes(xmin = delta_q025, xmax = delta_q975), width = 0.2,
-                colour = "black") +
-  geom_point(size = 3, colour = "black", fill = "white", stroke = 0.7) +
+  geom_errorbar(aes(xmin = delta_q025, xmax = delta_q975), width = 0.2) +
+  geom_point(size = 3, fill = "white", stroke = 0.8) +
+  scale_colour_manual(values = c("TRUE" = BLUE, "FALSE" = "grey45"),
+                      guide = "none") +
   scale_shape_manual(values = c("TRUE" = 16, "FALSE" = 21),
                      labels = c("FALSE" = "not significant", "TRUE" = "p < 0.05")) +
   scale_linetype_manual(values = c("TRUE" = "solid", "FALSE" = "22"),
@@ -114,8 +120,8 @@ ho_long <- pivot_longer(ho, cols = c(R2_shift, R2_shape),
 p_ho <- ggplot(ho_long, aes(x = R2, y = reorder(region, R2), fill = target)) +
   geom_vline(xintercept = 0, color = "grey50") +
   geom_col(position = "dodge", colour = "black", linewidth = 0.25) +
-  scale_fill_manual(values = c("LE shift" = "grey30",
-                               "Shape PCs" = "grey85")) +
+  scale_fill_manual(values = c("LE shift" = BLUE,
+                               "Shape PCs" = ORANGE)) +
   labs(x = "Out-of-region R²", y = NULL) +
   theme_minimal(base_size = 11) +
   theme(legend.position = "none")

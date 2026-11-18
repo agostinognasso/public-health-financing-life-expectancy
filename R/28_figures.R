@@ -46,6 +46,9 @@ DRIVER_NAMES <- c(log_GNI = "Log income per head", EDU = "Secondary enrolment",
                   ILR1 = "Balance: public vs non-public",
                   ILR2 = "Balance: domestic private vs external",
                   ILR3 = "Balance: out-of-pocket vs prepaid")
+# Colour palette, checked for colour-vision deficiency; every colour is
+# paired with a distinct symbol, so the figures also read in greyscale.
+BLUE <- "#2a78d6"; ORANGE <- "#eb6834"; AQUA <- "#1baf7a"
 
 dat <- build_panel(zero_rule = "multiplicative")
 pd  <- pdata.frame(dat, index = c("iso3c", "year"))
@@ -190,10 +193,12 @@ PUZZLE <- coef(m1)[["PUB"]]
 pA <- ggplot(lad, aes(y = ypos, x = beta)) +
   geom_vline(xintercept = 0, linewidth = 0.4, colour = "black") +
   geom_vline(xintercept = PUZZLE, linetype = "dotted", colour = "grey35") +
-  geom_errorbarh(aes(xmin = lo, xmax = hi), height = 0, linewidth = 0.5) +
+  geom_errorbarh(aes(xmin = lo, xmax = hi, colour = kind), height = 0,
+                 linewidth = 0.6) +
   geom_point(aes(shape = kind, fill = kind), size = 2.6, colour = "black") +
   scale_shape_manual(values = c(static = 22, dynamic = 21), name = NULL) +
-  scale_fill_manual(values = c(static = "grey85", dynamic = "grey30"), name = NULL) +
+  scale_fill_manual(values = c(static = ORANGE, dynamic = BLUE), name = NULL) +
+  scale_colour_manual(values = c(static = ORANGE, dynamic = BLUE), name = NULL) +
   YSCALE() +
   labs(x = "Years of life expectancy per percentage point", y = NULL) +
   coord_cartesian(xlim = c(-0.075, 0.055), clip = "off") +
@@ -213,12 +218,13 @@ pB <- ggplot() +
   geom_vline(xintercept = 0, linewidth = 0.4, colour = "black") +
   geom_vline(xintercept = PUZZLE, linetype = "dotted", colour = "grey35") +
   geom_segment(data = fsB %>% filter(!arrow),
-               aes(x = x, xend = xend, y = y, yend = y), linewidth = 0.5) +
+               aes(x = x, xend = xend, y = y, yend = y), linewidth = 0.6,
+               colour = BLUE) +
   geom_segment(data = fsB %>% filter(arrow),
-               aes(x = x, xend = xend, y = y, yend = y), linewidth = 0.5,
-               arrow = ARROW) +
+               aes(x = x, xend = xend, y = y, yend = y), linewidth = 0.6,
+               colour = BLUE, fill = BLUE, arrow = ARROW) +
   geom_point(data = lrtab %>% filter(alpha < 1), aes(x = beta_LR, y = ypos),
-             size = 2.6, shape = 21, fill = "grey30", colour = "black") +
+             size = 2.6, shape = 21, fill = BLUE, colour = "black") +
   YSCALE() +
   labs(x = "Years of life expectancy per percentage point", y = NULL) +
   coord_cartesian(xlim = c(-CAP, CAP)) +
@@ -265,14 +271,16 @@ print(mix %>% mutate(across(c(est, se, lo, hi), ~ round(.x, 4))) %>%
 F1 <- ggplot(mix, aes(y = fct_rev(factor(variable)), x = est,
                       shape = dimension, fill = dimension)) +
   geom_vline(xintercept = 0, linewidth = 0.4) +
-  geom_errorbarh(aes(xmin = lo, xmax = hi), height = 0, linewidth = 0.45,
-                 position = position_dodge(width = 0.6)) +
+  geom_errorbarh(aes(xmin = lo, xmax = hi, colour = dimension), height = 0,
+                 linewidth = 0.55, position = position_dodge(width = 0.6)) +
   geom_point(size = 2.4, colour = "black",
              position = position_dodge(width = 0.6)) +
   scale_shape_manual(values = c(`between countries` = 22,
                                 `within countries` = 21), name = NULL) +
-  scale_fill_manual(values = c(`between countries` = "grey85",
-                               `within countries` = "grey30"), name = NULL) +
+  scale_fill_manual(values = c(`between countries` = ORANGE,
+                               `within countries` = BLUE), name = NULL) +
+  scale_colour_manual(values = c(`between countries` = ORANGE,
+                                 `within countries` = BLUE), name = NULL) +
   labs(x = "Years of life expectancy per unit of the driver", y = NULL) +
   theme_pub(10)
 save_fig("Figure1", F1, 8.6, 4.2)
@@ -288,14 +296,18 @@ s1 <- sens %>% filter(!is.na(delta)) %>%
 gbm <- sens %>% filter(is.na(delta))
 FS11 <- ggplot(s1, aes(x = factor(delta), y = ILR1, shape = rule, fill = rule)) +
   geom_hline(yintercept = 0, linewidth = 0.4) +
-  geom_errorbar(aes(ymin = lo, ymax = hi), width = 0, linewidth = 0.45,
-                position = position_dodge(width = 0.45)) +
+  geom_errorbar(aes(ymin = lo, ymax = hi, colour = rule), width = 0,
+                linewidth = 0.55, position = position_dodge(width = 0.45)) +
   geom_point(size = 2.5, colour = "black",
              position = position_dodge(width = 0.45)) +
   { if (nrow(gbm)) geom_hline(yintercept = gbm$ILR1[1], linetype = "dashed",
                               colour = "grey40") } +
-  scale_shape_manual(values = c(21, 22), name = NULL) +
-  scale_fill_manual(values = c("grey30", "grey85"), name = NULL) +
+  scale_shape_manual(values = c(`additive replacement` = 21,
+                                `multiplicative replacement` = 22), name = NULL) +
+  scale_fill_manual(values = c(`additive replacement` = BLUE,
+                               `multiplicative replacement` = ORANGE), name = NULL) +
+  scale_colour_manual(values = c(`additive replacement` = BLUE,
+                                 `multiplicative replacement` = ORANGE), name = NULL) +
   labs(x = expression(paste("Detection limit  ", delta,
                             "  (percentage points of current health expenditure)")),
        y = "Coefficient on the first log-ratio coordinate") +
@@ -317,7 +329,7 @@ FS10 <- ggplot(l2, aes(y = fct_rev(factor(region)), x = R2,
   geom_vline(xintercept = 0, linewidth = 0.4) +
   geom_point(size = 2.6, colour = "black") +
   scale_shape_manual(values = c(21, 22), name = NULL) +
-  scale_fill_manual(values = c("grey30", "grey85"), name = NULL) +
+  scale_fill_manual(values = c(BLUE, ORANGE), name = NULL) +
   labs(x = expression(paste("Out-of-region ", R^2)), y = NULL) +
   theme_pub(10)
 save_fig("FigureS10", FS10, 8.6, 4.0)
@@ -332,8 +344,9 @@ bt$variable <- DRIVER_NAMES[bt$variable]
 bt$panel <- substr(bt$scheme, 1, 1)          # schemes are labelled A, B, C
 FS7 <- ggplot(bt, aes(y = fct_rev(factor(variable)), x = delta_vip)) +
   geom_vline(xintercept = 0, linewidth = 0.4) +
-  geom_errorbarh(aes(xmin = lo, xmax = hi), height = 0, linewidth = 0.45) +
-  geom_point(size = 2.1, shape = 21, fill = "grey30", colour = "black") +
+  geom_errorbarh(aes(xmin = lo, xmax = hi), height = 0, linewidth = 0.55,
+                 colour = BLUE) +
+  geom_point(size = 2.1, shape = 21, fill = BLUE, colour = "black") +
   facet_wrap(~ panel, nrow = 1) +
   labs(x = "Difference in variable importance, level minus shape", y = NULL) +
   theme_pub(9.5)
@@ -382,13 +395,14 @@ FS12 <- ggplot() +
   geom_vline(xintercept = c(-1, 1) * abs(PUZZLE), linetype = "dotted",
              colour = "grey35") +
   geom_segment(data = segS12 %>% filter(!arrow),
-               aes(x = x, xend = xend, y = y, yend = y, linewidth = level)) +
+               aes(x = x, xend = xend, y = y, yend = y, linewidth = level),
+               colour = BLUE) +
   geom_segment(data = segS12 %>% filter(arrow),
                aes(x = x, xend = xend, y = y, yend = y, linewidth = level),
-               arrow = ARROW) +
+               colour = BLUE, fill = BLUE, arrow = ARROW) +
   scale_linewidth_manual(values = LW, guide = "none") +
   geom_point(data = ptsS12, aes(x = beta, y = y), size = 2.8, shape = 21,
-             fill = "grey25", colour = "black") +
+             fill = BLUE, colour = "black") +
   scale_y_continuous(breaks = c(2, 1),
                      labels = c("Impact (one year)", "Long run"),
                      limits = c(0.55, 2.45)) +
@@ -409,12 +423,15 @@ ordS8 <- bf %>% group_by(var) %>% summarise(s = sum(abs(mean)), .groups = "drop"
 labS8 <- DRIVER_NAMES[c("log_GNI", "EDU", "IMM", "SAN", "HIV",
                         "ILR1", "ILR2", "ILR3")]
 bf$var_lab <- factor(labS8[bf$var], levels = rev(labS8[ordS8]))
-FS8 <- ggplot(bf, aes(x = mean, y = var_lab, shape = type, linetype = type)) +
+FS8 <- ggplot(bf, aes(x = mean, y = var_lab, shape = type, linetype = type,
+                      colour = type)) +
   geom_vline(xintercept = 0, colour = "grey50") +
   geom_errorbar(aes(xmin = q025, xmax = q975), width = 0.2,
-                position = position_dodge(0.6), colour = "black") +
+                position = position_dodge(0.6)) +
   geom_point(size = 2.8, position = position_dodge(0.6),
-             colour = "black", fill = "white", stroke = 0.7) +
+             fill = "white", stroke = 0.8) +
+  scale_colour_manual(values = c(between = ORANGE, within = BLUE),
+                      guide = "none") +
   scale_shape_manual(values = c(between = 16, within = 21),
                      labels = c("Between (cross-country)", "Within (year-to-year)"),
                      name = NULL) +
@@ -435,11 +452,12 @@ rsS9 <- read.csv(file.path(OUT, "24_region_slopes.csv")) %>%
 rsS9$region <- fct_reorder(factor(rsS9$region), rsS9$mean, .fun = mean)
 FS9 <- ggplot(rsS9, aes(x = mean, y = region, shape = driver, fill = driver)) +
   geom_vline(xintercept = 0, colour = "grey50") +
-  geom_errorbarh(aes(xmin = q025, xmax = q975), height = 0, linewidth = 0.4,
-                 position = position_dodge(0.7)) +
+  geom_errorbarh(aes(xmin = q025, xmax = q975, colour = driver), height = 0,
+                 linewidth = 0.5, position = position_dodge(0.7)) +
   geom_point(size = 2.6, colour = "black", position = position_dodge(0.7)) +
   scale_shape_manual(values = c(21, 22, 24), name = NULL) +
-  scale_fill_manual(values = c("grey15", "grey55", "white"), name = NULL) +
+  scale_fill_manual(values = c(BLUE, ORANGE, AQUA), name = NULL) +
+  scale_colour_manual(values = c(BLUE, ORANGE, AQUA), name = NULL) +
   labs(x = "Within-country slope, global plus regional (standardised, 95% credible interval)",
        y = NULL) +
   theme_pub(11)
