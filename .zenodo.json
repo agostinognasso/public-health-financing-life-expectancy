@@ -1,0 +1,46 @@
+{
+  "title": "Replication data and code for \"Public health financing and life expectancy: Within-country evidence and implications for planning\"",
+  "upload_type": "dataset",
+  "description": "<p>Data extracts, R code and estimation output behind the tables, figures and estimates of the article \"Public health financing and life expectancy: Within-country evidence and implications for planning\" and of its Supplementary Material. The analysis relates life expectancy at birth to the domestic public share of current health expenditure in an unbalanced panel of 138 countries over 2000-2024, built from World Bank Open Data and the WHO Global Health Expenditure Database. One command (<code>cd R; Rscript run_all.R</code>) regenerates every output from the extracts, with no manual step and no network access; see README.md.</p><p>Code under R/ is released under the MIT licence; data, output and figures under CC BY 4.0 (see LICENSE.txt).</p>",
+  "creators": [
+    {
+      "name": "Gnasso, Agostino",
+      "affiliation": "University of Naples Federico II",
+      "orcid": "0000-0002-8046-3923"
+    },
+    {
+      "name": "Franchetti, Girolamo",
+      "affiliation": "University of Naples Federico II",
+      "orcid": "0009-0002-7558-0735"
+    },
+    {
+      "name": "Iorio, Carmela",
+      "affiliation": "University of Naples Federico II",
+      "orcid": "0000-0001-5622-4124"
+    },
+    {
+      "name": "Politano, Massimiliano",
+      "affiliation": "University of Naples Federico II",
+      "orcid": "0000-0002-0654-9833"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "access_right": "open",
+  "language": "eng",
+  "keywords": [
+    "health financing",
+    "life expectancy",
+    "panel data",
+    "public expenditure",
+    "health policy",
+    "dynamic panel",
+    "replication"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.17605/OSF.IO/7R2HB",
+      "relation": "isNewVersionOf",
+      "scheme": "doi"
+    }
+  ]
+}

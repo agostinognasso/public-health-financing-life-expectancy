@@ -1,0 +1,7 @@
+"region","n_test","n_train","RMSE_shift","R2_shift","RMSE_shape","R2_shape"
+"Sub-Saharan Africa",26,81,5.484,-0.821,1.552,-0.214
+"Europe & Central Asia",35,72,2.538,-2.418,1.06,-0.021
+"Latin America & Caribbean",17,90,2.914,-3.803,0.998,-0.461
+"Middle East & North Africa",11,96,1.964,-0.673,1.211,-0.087
+"East Asia & Pacific",12,95,3.048,-0.075,0.847,0.193
+"South Asia",4,103,2.536,-1.339,0.761,-0.27

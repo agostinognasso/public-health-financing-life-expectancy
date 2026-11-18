@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this material, please cite it as below, together with the article it accompanies."
+type: dataset
+title: "Replication data and code for \"Public health financing and life expectancy: Within-country evidence and implications for planning\""
+version: 1.0.0
+authors:
+  - family-names: Gnasso
+    given-names: Agostino
+    affiliation: University of Naples Federico II
+    orcid: "https://orcid.org/0000-0002-8046-3923"
+  - family-names: Franchetti
+    given-names: Girolamo
+    affiliation: University of Naples Federico II
+    orcid: "https://orcid.org/0009-0002-7558-0735"
+  - family-names: Iorio
+    given-names: Carmela
+    affiliation: University of Naples Federico II
+    orcid: "https://orcid.org/0000-0001-5622-4124"
+  - family-names: Politano
+    given-names: Massimiliano
+    affiliation: University of Naples Federico II
+    orcid: "https://orcid.org/0000-0002-0654-9833"
+license:
+  - MIT
+  - CC-BY-4.0
+repository-code: "https://github.com/agostinognasso/public-health-financing-life-expectancy"
+keywords:
+  - health financing
+  - life expectancy
+  - panel data
+  - public expenditure
+  - health policy

@@ -1,0 +1,19 @@
+"spec","group","term","sd"
+"main decov(1,1,1,1)","iso3c","(Intercept)",2.40861794858132
+"main decov(1,1,1,1)","region","(Intercept)",0.523401359944449
+"main decov(1,1,1,1)","region","IMM_wn_s",0.189535651642398
+"main decov(1,1,1,1)","region","SAN_wn_s",0.364156066822559
+"main decov(1,1,1,1)","region","EDU_wn_s",0.424547444223878
+"main decov(1,1,1,1)","Residual",NA,1.24124390607354
+"tighter decov(2,1,1,0.5)","iso3c","(Intercept)",2.38394907199386
+"tighter decov(2,1,1,0.5)","region","(Intercept)",0.462985579981689
+"tighter decov(2,1,1,0.5)","region","IMM_wn_s",0.185792624004512
+"tighter decov(2,1,1,0.5)","region","SAN_wn_s",0.371165658960149
+"tighter decov(2,1,1,0.5)","region","EDU_wn_s",0.391104493234681
+"tighter decov(2,1,1,0.5)","Residual",NA,1.24240943496624
+"looser decov(1,1,1,2)","iso3c","(Intercept)",2.42326115459215
+"looser decov(1,1,1,2)","region","(Intercept)",0.536102899280755
+"looser decov(1,1,1,2)","region","IMM_wn_s",0.191846055539632
+"looser decov(1,1,1,2)","region","SAN_wn_s",0.366369408143881
+"looser decov(1,1,1,2)","region","EDU_wn_s",0.426220013234588
+"looser decov(1,1,1,2)","Residual",NA,1.24029533110087
