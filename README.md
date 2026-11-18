@@ -146,26 +146,26 @@ observations and countries behind each analysis.
 | Table 1, descriptive statistics | 33; 29, 19 | console output of 33, `29_table1_full.csv`, `19_within_between_sd.csv` |
 | Table 2, the estimator ladder | 28, from 20, 21, 26 | `28_ladder_impact.csv`, `28_ladder_longrun.csv` |
 | Table 3, System GMM and long-run multipliers | 16, 33 | `16_sysgmm_shortrun_ci.csv`, `16_sysgmm_longrun.csv` |
-| Table 4 and Section 6.3, with and without total health expenditure per head | 37 | `37_total_spending.csv`, `37_total_spending_diag.csv`, `37_total_spending_table.tex`; country-years of each sample in `37_total_spending_rows.csv` |
-| Table 5 and Section 7.2, a planned ten-point shift in the public share | 39, from 16, 21, 26, 35, 37, 38 | `39_planning.csv`, `39_planning_table.tex` |
+| Table 4 and Section 6.1, with and without total health expenditure per head | 37 | `37_total_spending.csv`, `37_total_spending_diag.csv`, `37_total_spending_table.tex`; country-years of each sample in `37_total_spending_rows.csv` |
+| Table 5 and Section 7.1, a planned ten-point shift in the public share | 39, from 16, 21, 26, 35, 37, 38 | `39_planning.csv`, `39_planning_table.tex` |
 | Figure 1, mixed-model coefficients | 28 | `figures/Figure1`, `28_mixed_coefficients.csv` |
 | Figure 2, the ladder on two estimands | 28, 26 | `figures/Figure2` |
 | Section 3.1, sample and regions | 34, 25 | `34_samples.csv` |
 | Section 3.2, from ILR1 to percentage points | 17 | `17_ilr_interpretive_map.csv` |
 | Section 5.1, within-country t statistics, ICC | 29 | `29_within_tstats.csv` |
-| Section 5.2, long run, MDE, equivalence | 16, 19 | `19_mde.csv`, `19_mde_longrun.csv`, `19_tost.csv` |
-| Section 5.2, exogeneity classification, distributed lag | 21 | `21_exogeneity.csv`, `21_dlag_cumulative.csv` |
-| Section 5.2, Kiviet-Bruno correction | 26 | `26_lsdvc.csv`, `26_lsdvc_bootstrap.csv` |
+| Sections 5.2 and 5.3, long run, MDE, equivalence | 16, 19 | `19_mde.csv`, `19_mde_longrun.csv`, `19_tost.csv` |
+| Sections 5.1 and 5.2, distributed lag, exogeneity classification | 21 | `21_exogeneity.csv`, `21_dlag_cumulative.csv` |
+| Section 5.3, Kiviet-Bruno correction | 26 | `26_lsdvc.csv`, `26_lsdvc_bootstrap.csv` |
 | Section 5.2, what the year effects take out | 36 | `36_fwl.csv`, `36_fwl_periods.csv` |
-| Sections 5.2 and 6.7, the AR(3) rejection | 31 | `31_ar3_*.csv` |
-| Section 5.3, the public share by income group in 2000 | 38 | `38_income.csv`, `38_income_groups.csv` |
-| Section 6.1, the pandemic years | 20 | `20_ladder.csv`, `20_dlag_windows.csv` |
+| Sections 5.2 and 6.2, the AR(3) rejection | 31 | `31_ar3_*.csv` |
+| Section 5.4, the public share by income group in 2000 | 38 | `38_income.csv`, `38_income_groups.csv` |
+| Section 6.2, the pandemic years | 20 | `20_ladder.csv`, `20_dlag_windows.csv` |
 | Section 6.2, zero treatment | 18 | `18_delta_sensitivity.csv` |
-| Section 6.3, measure of public spending | 22, 21 | `22_level_ladder.csv` |
-| Section 6.4, missingness and gaps | 25 | `25_*.csv` |
-| Sections 5.2 and 6.5, HIV in the sample and in the model | 35 | `35_hiv*.csv` |
-| Section 6.6, the implausible outcome value | 30 | `30_outlier_influence.csv` |
-| Section 6.7, dynamic panel diagnostics | 15, 31 | `gmm_robustness_diagnostics.csv` |
+| Section 6.1, measure of public spending | 22, 21 | `22_level_ladder.csv` |
+| Section 6.2, missingness and gaps | 25 | `25_*.csv` |
+| Section 6.2, HIV in the sample and in the model | 35 | `35_hiv*.csv` |
+| Section 6.2, the implausible outcome value | 30 | `30_outlier_influence.csv` |
+| Section 6.2, dynamic panel diagnostics | 15, 31 | `gmm_robustness_diagnostics.csv` |
 | Supplementary Section S1.1, shape features | 02 | `shape_features_post.rds`, `shape_pca_*.csv` |
 | Supplementary Section S1.2, predictive design | 03 | `pls/` |
 | Supplementary Section S1.3, robustness of the design | 09 | `sensitivity_window.csv`, `influence_pls_loo.csv` |

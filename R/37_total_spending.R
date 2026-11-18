@@ -6,7 +6,7 @@
 # log CHE per head to the reference System GMM of Table 3, keeping
 # the public and out-of-pocket shares as they are, and compares the
 # coefficient on the public share on identical country-years
-# (Section 6.3, Table 4):
+# (Section 6.1, Table 4):
 #   A  the reference model on the analytical panel
 #   B  the same model on the observations where CHE per head is
 #      observed

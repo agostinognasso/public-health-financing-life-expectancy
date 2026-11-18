@@ -1,4 +1,4 @@
-# 30: an implausible outcome value (Section 6.6)
+# 30: an implausible outcome value (Section 6.2)
 #
 # The World Bank series gives the Central African Republic a life
 # expectancy of 14.7 years in 2009, against about 48 in the years

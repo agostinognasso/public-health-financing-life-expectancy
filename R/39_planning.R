@@ -2,7 +2,7 @@
 #
 # Collects, for each set of assumptions reported in the article, the
 # impact coefficient on the public share and translates it into the
-# terms of a planned shift of ten percentage points (Section 7.2,
+# terms of a planned shift of ten percentage points (Section 7.1,
 # Table 5):
 #   - the smallest equivalence margin the estimate establishes at the
 #     5 per cent level, |beta| + z(0.95) * SE, the margin at which the

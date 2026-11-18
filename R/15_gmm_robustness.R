@@ -4,7 +4,7 @@
 # with two-way effects, instruments for the lagged outcome from t-2 to
 # t-5, and with two-way effects and instruments from t-3 to t-5. For
 # each: AR(1) and AR(2), the Hansen J test, Difference-in-Hansen, and
-# the number of instruments (Section 6.7).
+# the number of instruments (Section 6.2).
 #
 # In two-step estimation plm's sargan() uses the model's weight
 # matrix, so it returns the robust Hansen J. plm has no

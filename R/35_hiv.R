@@ -1,5 +1,5 @@
-# 35: HIV prevalence, in the sample and in the model (Sections 5.2
-#     and 6.5, Supplementary Table S1)
+# 35: HIV prevalence, in the sample and in the model (Section 6.2
+#     and Supplementary Table S1)
 #
 # HIV prevalence is reported for fewer countries than the other
 # drivers, so adding it as a regressor changes two things at once:

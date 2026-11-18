@@ -1,4 +1,4 @@
-# 25: missingness, panel gaps and the inclusion rule (Section 6.4)
+# 25: missingness, panel gaps and the inclusion rule (Section 6.2)
 #
 # The analysis is complete-case. The script reports the share of the
 # country-by-year rectangle that is analysed, missingness by

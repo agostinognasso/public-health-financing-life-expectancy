@@ -12,7 +12,7 @@
 # script reports the coefficient for each group, their difference,
 # the smallest equivalence margin that each group and the difference
 # establish at the 5 per cent level, and the long-run multiplier of
-# each group with Fieller sets (Section 5.3, Table 5).
+# each group with Fieller sets (Section 5.4, Table 5).
 #
 # Reads  data/df_panel_drivers.rds, and data/ through build_panel()
 # Writes output/38_income.csv, 38_income_groups.csv

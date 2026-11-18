@@ -7,8 +7,8 @@
 # T = 25 the Nickell bias of LSDV is O(1/T), so the intermediate
 # rungs separate the effect of adding the lagged outcome from the
 # effect of instrumenting. Every rung is fitted on the full window
-# and on 2000-2019 (Section 6.1), and the distributed lag of
-# Section 5.2 on both windows.
+# and on 2000-2019 (Section 6.2), and the distributed lag of
+# Section 5.1 on both windows.
 #
 # Reads  data/ through build_panel()
 # Writes output/20_ladder.csv, 20_dlag_windows.csv

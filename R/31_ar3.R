@@ -1,4 +1,4 @@
-# 31: the AR(3) rejection (Sections 5.2 and 6.7)
+# 31: the AR(3) rejection (Sections 5.2 and 6.2)
 #
 # The Arellano-Bond moment conditions need no second-order serial
 # correlation in the differenced residuals; AR(3) is not among them.

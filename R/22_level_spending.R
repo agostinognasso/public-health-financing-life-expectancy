@@ -3,7 +3,7 @@
 # SH.XPD.GHED.CH.ZS is a share of current health expenditure: it
 # rises when public spending grows and also when private spending
 # falls. The ladder is repeated on two measures whose denominator
-# lies outside the health accounts (Section 6.3):
+# lies outside the health accounts (Section 6.1):
 #   SH.XPD.GHED.GD.ZS  public health spending, % of GDP
 #   SH.XPD.GHED.PC.CD  public health spending per head, current US$
 #

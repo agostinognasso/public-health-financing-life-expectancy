@@ -9,7 +9,7 @@
 #      one-sided equivalence tests (TOST), at impact and in the long
 #      run. In the long run both are given by the delta method and
 #      in a form that does not rely on it: the impact MDE divided by
-#      1 - alpha, and TOST on the Fieller pivot (Sections 4.3, 5.3).
+#      1 - alpha, and TOST on the Fieller pivot (Sections 4.2, 5.3).
 #
 # Reads  output/16_sysgmm_shortrun_ci.csv, 16_sysgmm_longrun.csv;
 #        data/ through build_panel()
